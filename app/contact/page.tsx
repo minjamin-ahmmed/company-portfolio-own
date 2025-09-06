@@ -15,6 +15,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Mail,
   Phone,
   MapPin,
@@ -89,20 +95,6 @@ const offices = [
     zipcode: "San Francisco, CA 94105",
     phone: "+1 (555) 123-4567",
     email: "sf@portfolio.com",
-  },
-  {
-    city: "New York",
-    address: "456 Innovation Ave, Floor 15",
-    zipcode: "New York, NY 10001",
-    phone: "+1 (555) 987-6543",
-    email: "ny@portfolio.com",
-  },
-  {
-    city: "Austin",
-    address: "789 Startup Blvd, Building C",
-    zipcode: "Austin, TX 78701",
-    phone: "+1 (555) 456-7890",
-    email: "austin@portfolio.com",
   },
 ];
 
@@ -493,49 +485,106 @@ export default function ContactPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                question: "How long does a typical project take?",
-                answer:
-                  "Project timelines vary based on complexity, but most web development projects take 4-12 weeks from start to finish.",
-              },
-              {
-                question: "Do you work with international clients?",
-                answer:
-                  "Yes! We work with clients worldwide and have experience managing projects across different time zones.",
-              },
-              {
-                question: "What's included in your maintenance packages?",
-                answer:
-                  "Our maintenance includes security updates, performance monitoring, backup management, and technical support.",
-              },
-              {
-                question: "Can you help with existing projects?",
-                answer:
-                  "We can audit, optimize, or add new features to existing applications and websites.",
-              },
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              <AccordionItem
+                value="item-1"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
               >
-                <Card className="glass glass-dark border-border/50">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold mb-3">
-                      {faq.question}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  How long does a typical project take?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Project timelines vary based on complexity, but most web
+                  development projects take 4-12 weeks from start to finish. We
+                  provide detailed project timelines during our initial
+                  consultation and keep you updated throughout the development
+                  process.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-2"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
+              >
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Do you work with international clients?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Yes! We work with clients worldwide and have experience
+                  managing projects across different time zones. We use modern
+                  collaboration tools and flexible communication schedules to
+                  ensure smooth project delivery regardless of location.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-3"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
+              >
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  What's included in your maintenance packages?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Our maintenance includes security updates, performance
+                  monitoring, backup management, and technical support. We also
+                  provide content updates, bug fixes, and feature enhancements
+                  as part of our comprehensive maintenance plans.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-4"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
+              >
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Can you help with existing projects?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  Absolutely! We can audit, optimize, or add new features to
+                  existing applications and websites. Our team specializes in
+                  code reviews, performance optimization, and modernizing legacy
+                  systems while maintaining functionality.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-5"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
+              >
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  What technologies do you specialize in?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  We specialize in modern web technologies including React,
+                  Next.js, TypeScript, Node.js, and various databases. We also
+                  work with mobile development frameworks and cloud platforms
+                  like AWS and Vercel for scalable solutions.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem
+                value="item-6"
+                className="glass glass-dark border-border/50 rounded-lg px-6"
+              >
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  How do you handle project communication?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  We maintain transparent communication through regular updates,
+                  scheduled check-ins, and dedicated project management tools.
+                  You'll have direct access to your development team and receive
+                  weekly progress reports throughout the project lifecycle.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </motion.div>
         </div>
       </section>
     </div>
