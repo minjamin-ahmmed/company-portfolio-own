@@ -1,12 +1,20 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Target, Users, Lightbulb, Award, Calendar } from "lucide-react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import CountUp from "react-countup";
+import {
+  ArrowRight,
+  Target,
+  Users,
+  Lightbulb,
+  Award,
+  Calendar,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 const values = [
   {
@@ -33,47 +41,53 @@ const values = [
     description:
       "Quality is at the heart of everything we do, from initial concept to final delivery and ongoing support.",
   },
-]
+];
 
 const timeline = [
   {
     year: "2019",
     title: "Company Founded",
-    description: "Started as a small team with a big vision to transform digital experiences.",
+    description:
+      "Started as a small team with a big vision to transform digital experiences.",
   },
   {
     year: "2020",
     title: "First Major Client",
-    description: "Landed our first enterprise client and delivered a game-changing e-commerce platform.",
+    description:
+      "Landed our first enterprise client and delivered a game-changing e-commerce platform.",
   },
   {
     year: "2021",
     title: "Team Expansion",
-    description: "Grew our team to 15+ talented developers, designers, and strategists.",
+    description:
+      "Grew our team to 15+ talented developers, designers, and strategists.",
   },
   {
     year: "2022",
     title: "International Reach",
-    description: "Expanded our services globally, working with clients across 3 continents.",
+    description:
+      "Expanded our services globally, working with clients across 3 continents.",
   },
   {
     year: "2023",
     title: "100+ Projects",
-    description: "Celebrated completing over 100 successful projects and partnerships.",
+    description:
+      "Celebrated completing over 100 successful projects and partnerships.",
   },
   {
     year: "2024",
     title: "Innovation Lab",
-    description: "Launched our innovation lab focusing on AI and emerging technologies.",
+    description:
+      "Launched our innovation lab focusing on AI and emerging technologies.",
   },
-]
+];
 
 const achievements = [
-  { number: "150+", label: "Projects Delivered" },
-  { number: "50+", label: "Happy Clients" },
-  { number: "15+", label: "Team Members" },
-  { number: "99%", label: "Client Satisfaction" },
-]
+  { end: 150, suffix: "+", label: "Projects Delivered" },
+  { end: 50, suffix: "+", label: "Happy Clients" },
+  { end: 15, suffix: "+", label: "Team Members" },
+  { end: 99, suffix: "%", label: "Client Satisfaction" },
+];
 
 export default function AboutPage() {
   return (
@@ -81,12 +95,19 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(251,146,60,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(10,147,150,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(10,147,150,0.1),transparent_50%)]" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-6 px-4 py-2 text-sm font-medium"
+              >
                 About Our Company
               </Badge>
             </motion.div>
@@ -110,8 +131,9 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Founded in 2019, we're a passionate team of developers, designers, and strategists dedicated to creating
-              exceptional digital experiences that drive business growth.
+              Founded in 2019, we're a passionate team of developers, designers,
+              and strategists dedicated to creating exceptional digital
+              experiences that drive business growth.
             </motion.p>
           </div>
         </div>
@@ -129,8 +151,19 @@ export default function AboutPage() {
           >
             {achievements.map((achievement, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{achievement.number}</div>
-                <div className="text-muted-foreground font-medium">{achievement.label}</div>
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
+                  <CountUp
+                    end={achievement.end}
+                    suffix={achievement.suffix}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    duration={2}
+                    separator=","
+                  />
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  {achievement.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -147,22 +180,30 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Our Story</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+                Our Story
+              </h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  What started as a small team with a shared passion for technology has grown into a full-service
-                  digital agency trusted by businesses worldwide. We believe that great software isn't just about
-                  code—it's about understanding people, solving real problems, and creating experiences that matter.
+                  What started as a small team with a shared passion for
+                  technology has grown into a full-service digital agency
+                  trusted by businesses worldwide. We believe that great
+                  software isn't just about code—it's about understanding
+                  people, solving real problems, and creating experiences that
+                  matter.
                 </p>
                 <p>
-                  Our journey began when we recognized the gap between what businesses needed and what traditional
-                  development agencies were delivering. We set out to change that by combining technical excellence with
-                  genuine partnership and transparent communication.
+                  Our journey began when we recognized the gap between what
+                  businesses needed and what traditional development agencies
+                  were delivering. We set out to change that by combining
+                  technical excellence with genuine partnership and transparent
+                  communication.
                 </p>
                 <p>
-                  Today, we're proud to work with startups, scale-ups, and enterprises across various industries,
-                  helping them navigate the digital landscape and achieve their goals through innovative technology
-                  solutions.
+                  Today, we're proud to work with startups, scale-ups, and
+                  enterprises across various industries, helping them navigate
+                  the digital landscape and achieve their goals through
+                  innovative technology solutions.
                 </p>
               </div>
             </motion.div>
@@ -198,13 +239,16 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Our Values</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Our Values
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              These core values guide everything we do and shape how we work with our clients and each other.
+              These core values guide everything we do and shape how we work
+              with our clients and each other.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -219,9 +263,13 @@ export default function AboutPage() {
                       <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                         <value.icon className="h-6 w-6" />
                       </div>
-                      <h3 className="text-xl font-semibold ml-4">{value.title}</h3>
+                      <h3 className="text-xl font-semibold ml-4">
+                        {value.title}
+                      </h3>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {value.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -240,9 +288,12 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Our Journey</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Our Journey
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              From humble beginnings to industry recognition, here's how we've grown over the years.
+              From humble beginnings to industry recognition, here's how we've
+              grown over the years.
             </p>
           </motion.div>
 
@@ -264,15 +315,25 @@ export default function AboutPage() {
                   <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 w-3 h-3 bg-primary rounded-full border-4 border-background"></div>
 
                   {/* Content */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12 md:ml-auto"}`}>
+                  <div
+                    className={`ml-12 md:ml-0 md:w-1/2 ${
+                      index % 2 === 0 ? "md:pr-12" : "md:pl-12 md:ml-auto"
+                    }`}
+                  >
                     <Card className="glass glass-dark border-border/50">
                       <CardContent className="p-6">
                         <div className="flex items-center mb-3">
                           <Calendar className="h-4 w-4 text-primary mr-2" />
-                          <span className="text-sm font-semibold text-primary">{item.year}</span>
+                          <span className="text-sm font-semibold text-primary">
+                            {item.year}
+                          </span>
                         </div>
-                        <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                        <h3 className="text-lg font-semibold mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {item.description}
+                        </p>
                       </CardContent>
                     </Card>
                   </div>
@@ -293,18 +354,30 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Ready to Work Together?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Ready to Work Together?
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed">
-              Let's discuss how we can help bring your vision to life and drive your business forward.
+              Let's discuss how we can help bring your vision to life and drive
+              your business forward.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold" asChild>
+              <Button
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold"
+                asChild
+              >
                 <Link href="/contact">
                   Start a Project
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-6 text-lg font-semibold bg-transparent" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold bg-transparent"
+                asChild
+              >
                 <Link href="/team">Meet Our Team</Link>
               </Button>
             </div>
@@ -312,5 +385,5 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

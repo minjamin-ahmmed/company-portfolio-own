@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github, Twitter, Linkedin, Mail } from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   return (
@@ -17,9 +17,12 @@ export function Footer() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold text-primary">Portfolio</h3>
+            <h3 className="text-lg font-semibold text-primary">
+              nexivo <span className="dark:text-white">.</span>
+            </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Creating exceptional digital experiences with modern technology and innovative design.
+              Creating exceptional digital experiences with modern technology
+              and innovative design.
             </p>
           </motion.div>
 
@@ -31,24 +34,28 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-sm font-semibold text-foreground">Quick Links</h4>
+            <h4 className="text-sm font-semibold text-foreground">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
-              {["About", "Services", "Projects", "Contact"].map((item, index) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Link
-                    href={`/${item.toLowerCase()}`}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 hover-lift"
+              {["About", "Services", "Projects", "Contact"].map(
+                (item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+                    viewport={{ once: true }}
                   >
-                    {item}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={`/${item.toLowerCase()}`}
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 hover-lift"
+                    >
+                      {item}
+                    </Link>
+                  </motion.li>
+                )
+              )}
             </ul>
           </motion.div>
 
@@ -62,7 +69,12 @@ export function Footer() {
           >
             <h4 className="text-sm font-semibold text-foreground">Services</h4>
             <ul className="space-y-2">
-              {["Web Development", "UI/UX Design", "Mobile Apps", "Consulting"].map((service, index) => (
+              {[
+                "Web Development",
+                "UI/UX Design",
+                "Mobile Apps",
+                "Consulting",
+              ].map((service, index) => (
                 <motion.li
                   key={service}
                   initial={{ opacity: 0, x: -10 }}
@@ -70,7 +82,9 @@ export function Footer() {
                   transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <span className="text-sm text-muted-foreground">{service}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {service}
+                  </span>
                 </motion.li>
               ))}
             </ul>
@@ -120,9 +134,11 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-center text-sm text-muted-foreground">© 2024 Portfolio. All rights reserved.</p>
+          <p className="text-center text-sm text-muted-foreground">
+            © 2025 nexivo. All rights reserved.
+          </p>
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

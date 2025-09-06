@@ -1,63 +1,78 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Code, Palette, Smartphone, Zap, CheckCircle } from "lucide-react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import CountUp from "react-countup";
+import {
+  ArrowRight,
+  Code,
+  Palette,
+  Smartphone,
+  Zap,
+  CheckCircle,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
     icon: Code,
     title: "Web Development",
-    description: "Custom web applications built with modern technologies and best practices.",
+    description:
+      "Custom web applications built with modern technologies and best practices.",
     features: ["React & Next.js", "TypeScript", "API Integration"],
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful, intuitive designs that enhance user experience and drive engagement.",
+    description:
+      "Beautiful, intuitive designs that enhance user experience and drive engagement.",
     features: ["User Research", "Prototyping", "Design Systems"],
   },
   {
     icon: Smartphone,
     title: "Mobile Development",
-    description: "Native and cross-platform mobile apps that deliver exceptional performance.",
+    description:
+      "Native and cross-platform mobile apps that deliver exceptional performance.",
     features: ["React Native", "iOS & Android", "App Store Optimization"],
   },
   {
     icon: Zap,
     title: "Performance Optimization",
-    description: "Lightning-fast websites optimized for speed, SEO, and user experience.",
+    description:
+      "Lightning-fast websites optimized for speed, SEO, and user experience.",
     features: ["Core Web Vitals", "SEO Optimization", "Performance Audits"],
   },
-]
+];
 
 const projects = [
   {
     title: "E-commerce Platform",
-    description: "Modern e-commerce solution with advanced features and seamless checkout experience.",
+    description:
+      "Modern e-commerce solution with advanced features and seamless checkout experience.",
     image: "/modern-ecommerce-dashboard.png",
     tags: ["Next.js", "Stripe", "PostgreSQL"],
     category: "Web Development",
   },
   {
     title: "SaaS Dashboard",
-    description: "Comprehensive analytics dashboard with real-time data visualization and reporting.",
+    description:
+      "Comprehensive analytics dashboard with real-time data visualization and reporting.",
     image: "/saas-analytics-dashboard-with-charts.jpg",
     tags: ["React", "D3.js", "Node.js"],
     category: "Dashboard",
   },
   {
     title: "Mobile Banking App",
-    description: "Secure mobile banking application with biometric authentication and real-time transactions.",
+    description:
+      "Secure mobile banking application with biometric authentication and real-time transactions.",
     image: "/mobile-banking-app.png",
     tags: ["React Native", "Biometrics", "Security"],
     category: "Mobile App",
   },
-]
+];
 
 const clients = [
   { name: "TechCorp", logo: "/abstract-tech-logo.png" },
@@ -66,14 +81,14 @@ const clients = [
   { name: "DigitalFlow", logo: "/digital-agency-logo.png" },
   { name: "CloudTech", logo: "/cloud-technology-logo.jpg" },
   { name: "DataSync", logo: "/data-company-logo.png" },
-]
+];
 
 const stats = [
-  { number: "150+", label: "Projects Completed" },
-  { number: "50+", label: "Happy Clients" },
-  { number: "5+", label: "Years Experience" },
-  { number: "24/7", label: "Support Available" },
-]
+  { end: 150, suffix: "+", label: "Projects Completed" },
+  { end: 50, suffix: "+", label: "Happy Clients" },
+  { end: 5, suffix: "+", label: "Years Experience" },
+  { end: 24, suffix: "/7", label: "Support Available" },
+];
 
 export default function HomePage() {
   return (
@@ -82,7 +97,7 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(251,146,60,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(10,147,150,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(10,147,150,0.1),transparent_50%)]" />
 
         {/* Animated particles */}
         <div className="absolute inset-0">
@@ -110,8 +125,15 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-6 px-4 py-2 text-sm font-medium"
+              >
                 🚀 Building the Future of Digital Experiences
               </Badge>
             </motion.div>
@@ -135,8 +157,8 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Transform your ideas into powerful web applications, mobile apps, and digital experiences that drive
-              growth and delight users.
+              Transform your ideas into powerful web applications, mobile apps,
+              and digital experiences that drive growth and delight users.
             </motion.p>
 
             <motion.div
@@ -145,7 +167,11 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold group" asChild>
+              <Button
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold group"
+                asChild
+              >
                 <Link href="/contact">
                   Start Your Project
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -154,7 +180,7 @@ export default function HomePage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="px-8 py-6 text-lg font-semibold glass glass-dark bg-transparent"
+                className="px-8 py-6 text-lg font-semibold glass glass-dark bg-transparent hover:text-primary"
                 asChild
               >
                 <Link href="/projects">View Our Work</Link>
@@ -187,8 +213,19 @@ export default function HomePage() {
           >
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-muted-foreground font-medium">{stat.label}</div>
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
+                  <CountUp
+                    end={stat.end}
+                    suffix={stat.suffix}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    duration={2}
+                    separator=","
+                  />
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -205,13 +242,16 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-6">Our Services</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-6">
+              Our Services
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              We offer comprehensive digital solutions to help your business thrive in the modern world.
+              We offer comprehensive digital solutions to help your business
+              thrive in the modern world.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -226,12 +266,19 @@ export default function HomePage() {
                       <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                         <service.icon className="h-6 w-6" />
                       </div>
-                      <h3 className="text-xl font-semibold ml-4">{service.title}</h3>
+                      <h3 className="text-xl font-semibold ml-4">
+                        {service.title}
+                      </h3>
                     </div>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
                     <ul className="space-y-2">
                       {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm">
+                        <li
+                          key={featureIndex}
+                          className="flex items-center text-sm"
+                        >
                           <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                           {feature}
                         </li>
@@ -255,9 +302,12 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-6">Featured Projects</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-6">
+              Featured Projects
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              Discover some of our recent work and see how we've helped businesses achieve their goals.
+              Discover some of our recent work and see how we've helped
+              businesses achieve their goals.
             </p>
           </motion.div>
 
@@ -284,11 +334,19 @@ export default function HomePage() {
                     </div>
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                    <h3 className="text-xl font-semibold mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="outline" className="text-xs">
+                        <Badge
+                          key={tagIndex}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -326,8 +384,12 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-semibold mb-4">Trusted by Industry Leaders</h2>
-            <p className="text-muted-foreground">We're proud to work with amazing companies around the world.</p>
+            <h2 className="text-2xl font-semibold mb-4">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="text-muted-foreground">
+              We're proud to work with amazing companies around the world.
+            </p>
           </motion.div>
 
           <motion.div
@@ -369,16 +431,26 @@ export default function HomePage() {
               Ready to Start Your Project?
             </h2>
             <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed">
-              Let's work together to bring your vision to life. Get in touch with our team today.
+              Let's work together to bring your vision to life. Get in touch
+              with our team today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold" asChild>
+              <Button
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold"
+                asChild
+              >
                 <Link href="/contact">
                   Get Started Today
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-6 text-lg font-semibold bg-transparent" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold bg-transparent"
+                asChild
+              >
                 <Link href="/about">Learn More About Us</Link>
               </Button>
             </div>
@@ -386,5 +458,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

@@ -1,15 +1,29 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, ExternalLink, Github, Calendar, Users, Award } from "lucide-react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight,
+  ExternalLink,
+  Github,
+  Calendar,
+  Users,
+  Award,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
-const categories = ["All", "Web Development", "Mobile App", "E-commerce", "Dashboard", "SaaS"]
+const categories = [
+  "All",
+  "Web Development",
+  "Mobile App",
+  "E-commerce",
+  "Dashboard",
+  "SaaS",
+];
 
 const projects = [
   {
@@ -26,7 +40,11 @@ const projects = [
     duration: "6 months",
     team: "8 members",
     year: "2024",
-    results: ["300% increase in conversion rate", "50% reduction in page load time", "99.9% uptime achieved"],
+    results: [
+      "300% increase in conversion rate",
+      "50% reduction in page load time",
+      "99.9% uptime achieved",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -66,7 +84,11 @@ const projects = [
     duration: "8 months",
     team: "10 members",
     year: "2023",
-    results: ["2M+ downloads in first year", "99.99% transaction success rate", "Bank-grade security certification"],
+    results: [
+      "2M+ downloads in first year",
+      "99.99% transaction success rate",
+      "Bank-grade security certification",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -84,7 +106,11 @@ const projects = [
     duration: "10 months",
     team: "12 members",
     year: "2023",
-    results: ["50,000+ patients served", "30% reduction in wait times", "HIPAA compliant infrastructure"],
+    results: [
+      "50,000+ patients served",
+      "30% reduction in wait times",
+      "HIPAA compliant infrastructure",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -102,7 +128,11 @@ const projects = [
     duration: "7 months",
     team: "9 members",
     year: "2023",
-    results: ["85% improvement in learning outcomes", "100,000+ active learners", "AI accuracy rate of 94%"],
+    results: [
+      "85% improvement in learning outcomes",
+      "100,000+ active learners",
+      "AI accuracy rate of 94%",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -128,26 +158,37 @@ const projects = [
     liveUrl: "#",
     githubUrl: "#",
   },
-]
+];
 
 export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
 
   const filteredProjects =
-    selectedCategory === "All" ? projects : projects.filter((project) => project.category === selectedCategory)
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,rgba(251,146,60,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(10,147,150,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_80%,rgba(10,147,150,0.1),transparent_50%)]" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-6 px-4 py-2 text-sm font-medium"
+              >
                 Our Portfolio
               </Badge>
             </motion.div>
@@ -170,8 +211,9 @@ export default function ProjectsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Explore our portfolio of successful projects that have helped businesses transform their digital presence
-              and achieve remarkable results.
+              Explore our portfolio of successful projects that have helped
+              businesses transform their digital presence and achieve remarkable
+              results.
             </motion.p>
           </div>
         </div>
@@ -203,7 +245,7 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -225,12 +267,22 @@ export default function ProjectsPage() {
                       <Badge variant="secondary">{project.category}</Badge>
                     </div>
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Button size="icon" variant="secondary" className="w-8 h-8" asChild>
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="w-8 h-8"
+                        asChild
+                      >
                         <Link href={project.liveUrl}>
                           <ExternalLink className="h-4 w-4" />
                         </Link>
                       </Button>
-                      <Button size="icon" variant="secondary" className="w-8 h-8" asChild>
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        className="w-8 h-8"
+                        asChild
+                      >
                         <Link href={project.githubUrl}>
                           <Github className="h-4 w-4" />
                         </Link>
@@ -242,10 +294,14 @@ export default function ProjectsPage() {
                       <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
-                      <span className="text-sm text-muted-foreground">{project.year}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {project.year}
+                      </span>
                     </div>
 
-                    <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2">{project.description}</p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
 
                     <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
@@ -260,7 +316,11 @@ export default function ProjectsPage() {
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="outline" className="text-xs">
+                        <Badge
+                          key={tagIndex}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -316,26 +376,38 @@ export default function ProjectsPage() {
             <div className="p-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
-                  <p className="text-muted-foreground">{selectedProject.client}</p>
+                  <h2 className="text-3xl font-bold mb-2">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-muted-foreground">
+                    {selectedProject.client}
+                  </p>
                 </div>
                 <Badge variant="secondary">{selectedProject.category}</Badge>
               </div>
 
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">{selectedProject.longDescription}</p>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                {selectedProject.longDescription}
+              </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div>
                   <h4 className="font-semibold mb-2">Duration</h4>
-                  <p className="text-muted-foreground">{selectedProject.duration}</p>
+                  <p className="text-muted-foreground">
+                    {selectedProject.duration}
+                  </p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Team Size</h4>
-                  <p className="text-muted-foreground">{selectedProject.team}</p>
+                  <p className="text-muted-foreground">
+                    {selectedProject.team}
+                  </p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Year</h4>
-                  <p className="text-muted-foreground">{selectedProject.year}</p>
+                  <p className="text-muted-foreground">
+                    {selectedProject.year}
+                  </p>
                 </div>
               </div>
 
@@ -391,11 +463,18 @@ export default function ProjectsPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Ready to Start Your Project?
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed">
-              Let's work together to create something amazing that drives real results for your business.
+              Let's work together to create something amazing that drives real
+              results for your business.
             </p>
-            <Button size="lg" className="px-8 py-6 text-lg font-semibold" asChild>
+            <Button
+              size="lg"
+              className="px-8 py-6 text-lg font-semibold"
+              asChild
+            >
               <Link href="/contact">
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -405,5 +484,5 @@ export default function ProjectsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

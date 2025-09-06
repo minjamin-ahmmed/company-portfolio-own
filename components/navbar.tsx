@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,25 +17,32 @@ const navigation = [
   { name: "Team", href: "/team" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
-]
+];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname();
 
   return (
     <motion.nav
-      className="sticky top-0 z-50 w-full border-b border-border/40 glass glass-dark backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-4 z-50 w-10/12 mx-auto rounded-full border-b border-border/40 glass glass-dark backdrop-blur supports-[backdrop-filter]:bg-background/60"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <motion.div className="flex-shrink-0" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-            <Link href="/" className="text-2xl font-bold text-primary">
-              Portfolio
+          <motion.div
+            className="flex-shrink-0"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link
+              href="/"
+              className="text-2xl font-bold text-primary dark:text-white "
+            >
+              nexivo <span className="text-primary">.</span>
             </Link>
           </motion.div>
 
@@ -52,16 +59,16 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-primary relative",
+                      "px-3 py-2 rounded-t-md text-sm font-medium transition-all duration-200 hover:text-primary relative",
                       pathname === item.href
                         ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:bg-accent/10",
+                        : "text-muted-foreground hover:bg-accent/10"
                     )}
                   >
                     {item.name}
                     {pathname === item.href && (
                       <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-lg"
                         layoutId="navbar-indicator"
                         transition={{ duration: 0.3 }}
                       />
@@ -76,7 +83,12 @@ export function Navbar() {
           <div className="flex items-center space-x-2">
             <ThemeToggle />
             <div className="md:hidden">
-              <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="w-9 h-9">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-9 h-9"
+              >
                 <AnimatePresence mode="wait">
                   {isOpen ? (
                     <motion.div
@@ -129,7 +141,7 @@ export function Navbar() {
                         "block px-3 py-2 rounded-md text-base font-medium transition-all duration-200",
                         pathname === item.href
                           ? "text-primary bg-primary/10"
-                          : "text-muted-foreground hover:text-primary hover:bg-accent/10",
+                          : "text-muted-foreground hover:text-primary hover:bg-accent/10"
                       )}
                       onClick={() => setIsOpen(false)}
                     >
@@ -143,5 +155,5 @@ export function Navbar() {
         </AnimatePresence>
       </div>
     </motion.nav>
-  )
+  );
 }

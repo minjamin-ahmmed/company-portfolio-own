@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Code,
@@ -15,9 +15,9 @@ import {
   Clock,
   Users,
   Target,
-} from "lucide-react"
-import { motion } from "framer-motion"
-import Link from "next/link"
+} from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const services = [
   {
@@ -33,13 +33,21 @@ const services = [
       "Progressive Web Apps (PWA)",
       "E-commerce Platforms",
     ],
-    technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "MongoDB"],
+    technologies: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "MongoDB",
+    ],
     startingPrice: "From $5,000",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful, intuitive designs that enhance user experience and drive engagement across all devices.",
+    description:
+      "Beautiful, intuitive designs that enhance user experience and drive engagement across all devices.",
     features: [
       "User Research & Analysis",
       "Wireframing & Prototyping",
@@ -48,7 +56,13 @@ const services = [
       "Usability Testing",
       "Responsive Design",
     ],
-    technologies: ["Figma", "Adobe Creative Suite", "Principle", "InVision", "Sketch"],
+    technologies: [
+      "Figma",
+      "Adobe Creative Suite",
+      "Principle",
+      "InVision",
+      "Sketch",
+    ],
     startingPrice: "From $3,000",
   },
   {
@@ -86,7 +100,8 @@ const services = [
   {
     icon: Zap,
     title: "Performance Optimization",
-    description: "Lightning-fast websites optimized for speed, Core Web Vitals, and exceptional user experience.",
+    description:
+      "Lightning-fast websites optimized for speed, Core Web Vitals, and exceptional user experience.",
     features: [
       "Core Web Vitals Optimization",
       "Page Speed Improvements",
@@ -114,7 +129,7 @@ const services = [
     technologies: ["SSL/TLS", "Cloudflare", "AWS Security", "Monitoring Tools"],
     startingPrice: "From $500/month",
   },
-]
+];
 
 const process = [
   {
@@ -127,7 +142,8 @@ const process = [
   {
     step: "02",
     title: "Design & Prototyping",
-    description: "Our design team creates wireframes, mockups, and interactive prototypes to visualize your solution.",
+    description:
+      "Our design team creates wireframes, mockups, and interactive prototypes to visualize your solution.",
     icon: Palette,
   },
   {
@@ -140,28 +156,32 @@ const process = [
   {
     step: "04",
     title: "Launch & Support",
-    description: "We deploy your project and provide ongoing support, maintenance, and optimization services.",
+    description:
+      "We deploy your project and provide ongoing support, maintenance, and optimization services.",
     icon: Zap,
   },
-]
+];
 
 const benefits = [
   {
     title: "Expert Team",
-    description: "Work with experienced developers and designers who stay current with the latest technologies.",
+    description:
+      "Work with experienced developers and designers who stay current with the latest technologies.",
     icon: Users,
   },
   {
     title: "Fast Delivery",
-    description: "Efficient project management and agile development practices ensure timely delivery.",
+    description:
+      "Efficient project management and agile development practices ensure timely delivery.",
     icon: Clock,
   },
   {
     title: "Quality Assurance",
-    description: "Rigorous testing and quality control processes guarantee reliable, bug-free solutions.",
+    description:
+      "Rigorous testing and quality control processes guarantee reliable, bug-free solutions.",
     icon: CheckCircle,
   },
-]
+];
 
 export default function ServicesPage() {
   return (
@@ -169,12 +189,19 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(120,119,198,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_30%,rgba(251,146,60,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(10,147,150,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_30%,rgba(10,147,150,0.1),transparent_50%)]" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-6 px-4 py-2 text-sm font-medium"
+              >
                 Our Services
               </Badge>
             </motion.div>
@@ -198,8 +225,8 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              From web development to mobile apps, we offer end-to-end digital services to help your business thrive in
-              the digital age.
+              From web development to mobile apps, we offer end-to-end digital
+              services to help your business thrive in the digital age.
             </motion.p>
           </div>
         </div>
@@ -208,7 +235,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -224,20 +251,29 @@ export default function ServicesPage() {
                         <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                           <service.icon className="h-6 w-6" />
                         </div>
-                        <h3 className="text-xl font-semibold ml-4">{service.title}</h3>
+                        <h3 className="text-xl font-semibold ml-4">
+                          {service.title}
+                        </h3>
                       </div>
                       <Badge variant="outline" className="text-xs">
                         {service.startingPrice}
                       </Badge>
                     </div>
 
-                    <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
 
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold mb-3">What's Included:</h4>
+                      <h4 className="text-sm font-semibold mb-3">
+                        What's Included:
+                      </h4>
                       <ul className="space-y-2">
                         {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
+                          <li
+                            key={featureIndex}
+                            className="flex items-center text-sm"
+                          >
                             <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                             {feature}
                           </li>
@@ -246,10 +282,16 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold mb-3">Technologies:</h4>
+                      <h4 className="text-sm font-semibold mb-3">
+                        Technologies:
+                      </h4>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="secondary" className="text-xs">
+                          <Badge
+                            key={techIndex}
+                            variant="secondary"
+                            className="text-xs"
+                          >
                             {tech}
                           </Badge>
                         ))}
@@ -283,10 +325,12 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Our Process</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Our Process
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              We follow a proven methodology to ensure your project is delivered on time, within budget, and exceeds
-              your expectations.
+              We follow a proven methodology to ensure your project is delivered
+              on time, within budget, and exceeds your expectations.
             </p>
           </motion.div>
 
@@ -309,7 +353,9 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -326,9 +372,12 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Why Choose Us</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Why Choose Us
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              We're committed to delivering exceptional results and building long-term partnerships with our clients.
+              We're committed to delivering exceptional results and building
+              long-term partnerships with our clients.
             </p>
           </motion.div>
 
@@ -346,7 +395,9 @@ export default function ServicesPage() {
                   <benefit.icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {benefit.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -363,18 +414,30 @@ export default function ServicesPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Ready to Get Started?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Ready to Get Started?
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed">
-              Let's discuss your project requirements and how we can help bring your vision to life.
+              Let's discuss your project requirements and how we can help bring
+              your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 py-6 text-lg font-semibold" asChild>
+              <Button
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold"
+                asChild
+              >
                 <Link href="/contact">
                   Start Your Project
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-6 text-lg font-semibold bg-transparent" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-lg font-semibold bg-transparent"
+                asChild
+              >
                 <Link href="/projects">View Our Portfolio</Link>
               </Button>
             </div>
@@ -382,5 +445,5 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

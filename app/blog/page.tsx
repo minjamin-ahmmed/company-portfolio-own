@@ -1,16 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { ArrowRight, Search, Calendar, Clock, User } from "lucide-react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Image from "next/image"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Search, Calendar, Clock, User } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
-const categories = ["All", "Web Development", "Design", "Technology", "Business", "Tutorials"]
+const categories = [
+  "All",
+  "Web Development",
+  "Design",
+  "Technology",
+  "Business",
+  "Tutorials",
+];
 
 const blogPosts = [
   {
@@ -163,24 +170,29 @@ Finally, we'll cover deployment strategies and production optimizations to ensur
     tags: ["Next.js", "Tutorial", "React", "App Router"],
     featured: true,
   },
-]
+];
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedPost, setSelectedPost] = useState<(typeof blogPosts)[0] | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedPost, setSelectedPost] = useState<
+    (typeof blogPosts)[0] | null
+  >(null);
 
   const filteredPosts = blogPosts.filter((post) => {
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory
+    const matchesCategory =
+      selectedCategory === "All" || post.category === selectedCategory;
     const matchesSearch =
       searchQuery === "" ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-    return matchesCategory && matchesSearch
-  })
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    return matchesCategory && matchesSearch;
+  });
 
-  const featuredPosts = blogPosts.filter((post) => post.featured)
+  const featuredPosts = blogPosts.filter((post) => post.featured);
 
   if (selectedPost) {
     return (
@@ -190,7 +202,11 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <Button variant="ghost" onClick={() => setSelectedPost(null)} className="mb-8">
+              <Button
+                variant="ghost"
+                onClick={() => setSelectedPost(null)}
+                className="mb-8"
+              >
                 ← Back to Blog
               </Button>
 
@@ -198,7 +214,9 @@ export default function BlogPage() {
                 <Badge variant="secondary" className="mb-4">
                   {selectedPost.category}
                 </Badge>
-                <h1 className="text-4xl sm:text-5xl font-bold text-balance mb-6">{selectedPost.title}</h1>
+                <h1 className="text-4xl sm:text-5xl font-bold text-balance mb-6">
+                  {selectedPost.title}
+                </h1>
 
                 <div className="flex items-center gap-6 text-muted-foreground">
                   <div className="flex items-center gap-2">
@@ -213,7 +231,9 @@ export default function BlogPage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
-                    <span>{new Date(selectedPost.date).toLocaleDateString()}</span>
+                    <span>
+                      {new Date(selectedPost.date).toLocaleDateString()}
+                    </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
@@ -241,16 +261,22 @@ export default function BlogPage() {
                 {selectedPost.content.split("\n\n").map((paragraph, index) => {
                   if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
                     return (
-                      <h3 key={index} className="text-xl font-semibold mt-8 mb-4">
+                      <h3
+                        key={index}
+                        className="text-xl font-semibold mt-8 mb-4"
+                      >
                         {paragraph.slice(2, -2)}
                       </h3>
-                    )
+                    );
                   }
                   return (
-                    <p key={index} className="mb-6 leading-relaxed text-muted-foreground">
+                    <p
+                      key={index}
+                      className="mb-6 leading-relaxed text-muted-foreground"
+                    >
                       {paragraph}
                     </p>
-                  )
+                  );
                 })}
               </div>
 
@@ -289,7 +315,7 @@ export default function BlogPage() {
           </div>
         </section>
       </div>
-    )
+    );
   }
 
   return (
@@ -297,12 +323,19 @@ export default function BlogPage() {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(120,119,198,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(251,146,60,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(10,147,150,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(10,147,150,0.1),transparent_50%)]" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge
+                variant="secondary"
+                className="mb-6 px-4 py-2 text-sm font-medium"
+              >
                 Our Blog
               </Badge>
             </motion.div>
@@ -326,8 +359,9 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Stay updated with the latest trends, best practices, and insights from our team of experts in web
-              development, design, and technology.
+              Stay updated with the latest trends, best practices, and insights
+              from our team of experts in web development, design, and
+              technology.
             </motion.p>
           </div>
         </div>
@@ -353,7 +387,9 @@ export default function BlogPage() {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className="transition-all duration-300"
@@ -377,13 +413,16 @@ export default function BlogPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Featured Articles</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+                Featured Articles
+              </h2>
               <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-                Our most popular and impactful articles, handpicked by our editorial team.
+                Our most popular and impactful articles, handpicked by our
+                editorial team.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {featuredPosts.slice(0, 2).map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -409,7 +448,9 @@ export default function BlogPage() {
                       <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-3 flex-1">{post.excerpt}</p>
+                      <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-3 flex-1">
+                        {post.excerpt}
+                      </p>
 
                       <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                         <div className="flex items-center gap-2">
@@ -419,7 +460,9 @@ export default function BlogPage() {
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
-                            <span>{new Date(post.date).toLocaleDateString()}</span>
+                            <span>
+                              {new Date(post.date).toLocaleDateString()}
+                            </span>
                           </div>
                           <div className="flex items-center gap-1">
                             <Clock className="h-4 w-4" />
@@ -455,10 +498,13 @@ export default function BlogPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
-              {selectedCategory === "All" ? "Latest Articles" : `${selectedCategory} Articles`}
+              {selectedCategory === "All"
+                ? "Latest Articles"
+                : `${selectedCategory} Articles`}
             </h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto leading-relaxed">
-              {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""} found
+              {filteredPosts.length} article
+              {filteredPosts.length !== 1 ? "s" : ""} found
             </p>
           </motion.div>
 
@@ -485,7 +531,9 @@ export default function BlogPage() {
                     </div>
                     {post.featured && (
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-primary text-primary-foreground">Featured</Badge>
+                        <Badge className="bg-primary text-primary-foreground">
+                          Featured
+                        </Badge>
                       </div>
                     )}
                   </div>
@@ -507,7 +555,11 @@ export default function BlogPage() {
 
                     <div className="flex flex-wrap gap-1 mb-4">
                       {post.tags.slice(0, 2).map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="outline" className="text-xs">
+                        <Badge
+                          key={tagIndex}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -534,12 +586,14 @@ export default function BlogPage() {
 
           {filteredPosts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">No articles found matching your criteria.</p>
+              <p className="text-muted-foreground text-lg">
+                No articles found matching your criteria.
+              </p>
               <Button
                 variant="outline"
                 onClick={() => {
-                  setSelectedCategory("All")
-                  setSearchQuery("")
+                  setSelectedCategory("All");
+                  setSearchQuery("");
                 }}
                 className="mt-4"
               >
@@ -560,9 +614,12 @@ export default function BlogPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">Stay Updated</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-balance mb-6">
+              Stay Updated
+            </h2>
             <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed">
-              Subscribe to our newsletter to get the latest articles and insights delivered to your inbox.
+              Subscribe to our newsletter to get the latest articles and
+              insights delivered to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <Input placeholder="Enter your email" className="flex-1" />
@@ -575,5 +632,5 @@ export default function BlogPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
